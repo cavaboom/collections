@@ -12,6 +12,9 @@ import Drivers.DriverB;
 import Drivers.DriverC;
 import Drivers.DriverD;
 import Exception.TransportTypeException;
+
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -88,6 +91,19 @@ public class Main {
         System.out.println(transport);
 
         System.out.println();
+
+        Map<Transport, List<Mechanic>> transportAndMechanic = new HashMap<>();
+        transportAndMechanic.put(car1, car1.getMechanicList());
+        transportAndMechanic.put(bus1, bus1.getMechanicList());
+        transportAndMechanic.put(car3, car3.getMechanicList());
+        transportAndMechanic.put(truck2, truck2.getMechanicList());
+        transportAndMechanic.put(truck3, truck3.getMechanicList());
+
+        for(Map.Entry<Transport, List<Mechanic>> map: transportAndMechanic.entrySet()) {
+            System.out.println(map);
+        }
+        System.out.println();
+
 
         try {
             mechanic1.doMaintenance(car1);
