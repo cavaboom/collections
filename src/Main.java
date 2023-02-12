@@ -1,3 +1,4 @@
+import Drivers.Driver;
 import Enums.BodyType;
 import Enums.LoadCapacity;
 import Enums.SeatsAmount;
@@ -13,10 +14,7 @@ import Drivers.DriverC;
 import Drivers.DriverD;
 import Exception.TransportTypeException;
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Main {
 
@@ -63,13 +61,15 @@ public class Main {
         System.out.println(car3);
         System.out.println();
 
-        car1.diagnose();
+        /*car1.diagnose();
         truck1.diagnose();
         try {
             bus1.diagnose();
         } catch (TransportTypeException e) {
             System.err.println("Автобусам не нужна диагностика");
         }
+
+        */
 
         car1.driverAndMechanic();
 
@@ -104,6 +104,20 @@ public class Main {
         }
         System.out.println();
 
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(driverB);
+        drivers.add(driverC);
+        drivers.add(driverD);
+        System.out.println(drivers);
+        drivers.add(driverC);
+        if(drivers.contains(driverC)) {
+            System.out.println("Такой водитель уже есть");
+        }
+        Iterator<Driver> driverIterator = drivers.iterator();
+        while (driverIterator.hasNext()) {
+            System.out.println(driverIterator.next());
+        }
+        System.out.println();
 
         try {
             mechanic1.doMaintenance(car1);
