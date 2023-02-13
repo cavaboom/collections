@@ -1,6 +1,8 @@
 package Drivers;
 import Utilities.Utilities;
 
+import java.util.Objects;
+
 public abstract class Driver {
     private String fullName;
     private boolean hasDriverlicense;
@@ -52,5 +54,18 @@ public abstract class Driver {
 
     public void fillTheCar() {
         System.out.println("Заправить авто");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return hasDriverlicense == driver.hasDriverlicense && Double.compare(driver.driveExp, driveExp) == 0 && fullName.equals(driver.fullName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, hasDriverlicense, driveExp);
     }
 }

@@ -2,6 +2,8 @@ package Drivers;
 
 import Utilities.Utilities;
 
+import java.util.Objects;
+
 public class DriverD extends Driver{
     private String typeOfDrivingLicense;
 
@@ -28,5 +30,19 @@ public class DriverD extends Driver{
 
     public void fillTheCar() {
         System.out.println("Водитель с категорией D " + getFullName() + " заправляет авто");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DriverD driverD = (DriverD) o;
+        return typeOfDrivingLicense.equals(driverD.typeOfDrivingLicense);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), typeOfDrivingLicense);
     }
 }
